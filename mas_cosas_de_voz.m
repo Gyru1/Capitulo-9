@@ -1,0 +1,16 @@
+﻿load voz_256m.txt;
+x1 = voz_256m';
+Fs = 8000;
+N1 = 256;
+x1 = x1 .* hanning(N1)';
+x2 = [x1 zeros(1, 7936)];
+N2 = 8192;
+X2 = fft(x2);
+M2 = 2 * (2/N1) * abs(X2);
+k = [0 : 999];
+f = (Fs/N2) * k;
+plot(f, M2(1:1000));
+title('Mag[X2]');
+xlabel('Hz');
+ylabel('mV');
+grid;

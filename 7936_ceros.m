@@ -1,0 +1,13 @@
+﻿load voz_256m.txt;
+x1 = voz_256m';
+Fs = 8000;
+N1 = 256;
+x1 = x1 .* hanning(N1)';
+x2 = [x1 zeros(1, 7936)];
+N2 = 8192;
+t = (1000/Fs) * (1:N2);
+plot(t(1:1000),x2(1:1000));
+title('x2(n)');
+xlabel('mseg');
+ylabel('mV');
+grid;
